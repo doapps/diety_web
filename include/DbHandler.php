@@ -35,11 +35,11 @@ class DbHandler {
             $password_hash = PassHash::hash($password);
  
             // Generating API key
-            $api_key = $this->generateApiKey();
+            $usuario_fb = $this->generateApiKey();
  
             // insert query
-            $stmt = $this->conn->prepare("INSERT INTO users(name, email, password_hash, api_key, status) values(?, ?, ?, ?, 1)");
-            $stmt->bind_param("ssss", $name, $email, $password_hash, $api_key);
+            $stmt = $this->conn->prepare("INSERT INTO usuarios(usuario_nombres, usuario_mail, usuario_apellidos, usuario_fb, usuario_active) values(?, ?, ?, ?, 1)");
+            $stmt->bind_param("ssss", $name, $email, $password_hash, $usuario_fb);
  
             $result = $stmt->execute();
  
